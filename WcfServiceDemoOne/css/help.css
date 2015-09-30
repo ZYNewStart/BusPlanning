@@ -1,0 +1,26 @@
+﻿.lockDiv {
+    z-index: 9998;
+    position: absolute;
+    opacity: 0.5;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border: 2px solid red;
+    display: none;
+    text-align: center;
+    background-color: #DBDBDB;
+    filter: Alpha(opacity=60);
+}
+
+.lockImg {
+    display: none;
+    text-align: center;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999;
+    position: absolute;
+    display: none;
+}

@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html style="font-size: 83.9375px;">
+<head>
+    <title>公交众包-深圳交研中心</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 ,user-scalable=no">
+    <style type="text/css">
+        html {
+            margin: 0;
+            font-family: arial,sans-serif;
+            display: block;
+            overflow-y: scroll;
+        }
+
+        .line-icon {
+            background: url(/img/arrow.png) center 45% no-repeat;
+            width: auto;
+            height: auto;
+        }
+
+        .line-item {
+            background: #FFF;
+            margin-bottom: 7px;
+        }
+
+        .line-list {
+            margin: 7px 5px 0;
+            background: #F7F7F7;
+            overflow: hidden;
+        }
+
+        .line-title {
+            position: relative;
+            border: 1px solid #ebebeb;
+            height: 2.1rem;
+            line-height: 2.1rem;
+            overflow: hidden;
+            margin-bottom:10px;
+        }
+
+        .station-num {
+            display: inline-block;
+            margin-left: .25rem;
+            width: 1rem;
+            height: .8rem;
+            background: #52B786;
+            line-height: .8rem;
+            font-size: .6rem;
+            text-align: center;
+            color: #FFF;
+            border-radius: 2px;
+        }
+
+        .station-off {
+            background: #e37479;
+        }
+
+        .station-list {
+            float: left;
+        }
+
+        .station-item {
+            float: left;
+            width: 1.5rem;
+            margin: 0 .1rem;
+            padding: 0;
+            border: 0;
+            outline: 0;
+        }
+
+        .station-name {
+            display: inline-block;
+            color: #989898;
+            margin-top: .25rem;
+            width: 1.5rem;
+            height: 4.1rem;
+            overflow: hidden;
+            font-size: .7rem;
+            word-break: break-word;
+        }
+
+        .clearfix:before, .clearfix:after {
+            content: "\0020";
+            display: block;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .clearfix {
+            zoom: 1;
+        }
+
+            .clearfix:after {
+                clear: both;
+            }
+
+
+        .line-list .station-list .station-item .station-name b {
+            display: block;
+            width: .75rem;
+            height: 100%;
+            float: left;
+        }
+
+        .line-list .station-time {
+            float: right;
+            width: 3rem;
+            text-align: center;
+            font-size: .6rem;
+            color: #999;
+        }
+
+        .line-list .station-list .station-item .station-name .station-name-center {
+            margin-left: .375rem;
+        }
+
+        .line-list .line-title .line-start {
+            margin-left: .5rem;
+        }
+
+        .line-list .line-title {
+            position: relative;
+            border: 1px solid #ebebeb;
+            height: 2.1rem;
+            line-height: 2.1rem;
+            overflow: hidden;
+        }
+
+        .line-start, #index .line-list .line-title .line-end {
+            display: block;
+            float: left;
+            font-size: .7rem;
+            height: 2.1rem;
+            line-height: 2.1rem;
+            overflow: hidden;
+        }
+
+        .price {
+            position: absolute;
+            right: 5px;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+            vertical-align: baseline;
+        }
+
+
+        .previous-price {
+            display: block;
+            float: left;
+            padding: 0 .25rem;
+            height: 2.1rem;
+            line-height: 2.1rem;
+            background: url(/img/del.png) center center no-repeat;
+            background-size: 1.25rem .275rem;
+            font-size: .6rem;
+            color: #999;
+            margin: 0;
+            border: 0;
+            outline: 0;
+            vertical-align: baseline;
+        }
+
+        .current-price {
+            color: #FF4E00;
+            font-size: .7rem;
+            line-height: 2.1rem;
+        }
+
+        .line-icon {
+            display: block;
+            float: left;
+            margin: 0 .25rem;
+            width: .9rem;
+            height: 2.1rem;
+            background: url(/img/arrow.png) center 45% no-repeat;
+            background-size: 100% .25rem;
+        }
+
+        .station-ellipsis {
+            position: relative;
+            top: 50%;
+            width: auto;
+        }
+
+            .station-ellipsis span {
+                float: left;
+                display: block;
+                margin-left: .1rem;
+                width: .15rem;
+                height: .15rem;
+                background: #9D9D9D;
+                border-radius: .125rem;
+            }
+
+            .station-list {
+    width: 11.5rem;
+    height: 5.5rem;
+    float: left;
+}
+    </style>
+    <script src="js/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/help.css" />
+</head>
+<body>
+    <div id="index" style="display: block;">
+        <div id="lineList" class="line-list">
+            <div class="line-item panel panel-primary" data-lineid="77">
+                <div class="line-title clearfix panel-heading">
+                    <span class="line-start">
+                        北苑家园
+                    </span>
+                    <span class="line-icon"></span>
+                    <span class="line-end">朝阳门</span>
+                    <p class="price">
+                        <span class="previous-price">8.0元</span>
+                        <span class="current-price">0.01元</span>
+                    </p>
+                </div>
+                <div class="station clearfix">
+                    <div class="station-list clearfix">
+                        <div class="station-item">
+                            <span class="station-num">1</span>
+                            <span class="station-name clearfix">
+                                <b class="station-name-center">望春园</b>
+                            </span>
+                        </div>
+                        <div class="station-item">
+                            <span class="station-num">2</span>
+                            <span class="station-name clearfix">
+                                <b class="station-name-center">茉藜园北门</b>
+                            </span>
+                        </div>
+                        <div class="station-item">
+                            <span class="station-num">3</span>
+                            <span class="station-name clearfix">
+                                <b class="station-name-center">清友园北门</b>
+                            </span>
+                        </div>
+                        <div class="station-item  station-ellipsis clearfix">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="station-item">
+                            <span class="station-num station-off">8</span>
+                            <span class="station-name clearfix">
+                                <b class="station-name-center">五矿广场</b>
+                            </span>
+                        </div>
+                        <div class="station-item">
+                            <span class="station-num station-off">9</span>
+                            <span class="station-name clearfix">
+                                <b class="station-name-center">朝阳门桥北</b>
+                            </span>
+                        </div>
+                        <div class="station-item">
+                            <span class="station-num station-off">10</span>
+                            <span class="station-name clearfix">
+                                <b>银河S O</b>
+                                <b> H O</b>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="station-time">
+                        <div class="start-time">
+                            <span>发车时间</span>
+                            <span>07:10</span>
+                        </div>
+                        <div class="arrive-time">
+                            <span>到达时间</span>
+                            <span>08:35</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    !function (n, e) {
+        var t = n.documentElement,
+            i = "orientationchange" in window ? "orientationchange" : "resize",
+            d = function () {
+                var n = t.clientWidth;
+                n && (t.style.fontSize = 20 * (n / 320) + "px")
+            };
+        n.addEventListener && (e.addEventListener(i, d, !1), n.addEventListener("DOMContentLoaded", d, !1))
+    }(document, window);
+
+    /*
+    //- 设置根元素fontSize~html的font-size最好是通过js来动态计算一个数值:
+    (function (doc, win) {
+        var _root = doc.documentElement,
+            resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            resizeCallback = function () {
+                var clientWidth = _root.clientWidth,
+                    fontSize = 20;
+                if (!clientWidth) return;
+                if (clientWidth < 640) {
+                    fontSize = 20 * (clientWidth / 320);
+                } else {
+                    fontSize = 20 * (640 / 320);
+                }
+                _root.style.fontSize = fontSize + 'px';
+            };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvent, resizeCallback, false);
+        doc.addEventListener('DOMContentLoaded', resizeCallback, false);
+    })(document, window);*/
+</script>

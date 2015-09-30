@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 1px;
+            font-family: "微软雅黑";
+        }
+
+        #BgDiv1 {
+            background-color: #000;
+            position: absolute;
+            z-index: 9999;
+            display: none;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            opacity: 0.6;
+            filter: alpha(opacity=60);
+        }
+        /*遮罩*/
+
+        .DialogDiv {
+            position: absolute;
+            z-index: 99999;
+        }
+        /*配送公告*/
+
+
+        .U-guodu-box {
+            padding: 5px 15px;
+            background: #3c3c3f;
+            filter: alpha(opacity=90);
+            -moz-opacity: 0.9;
+            -khtml-opacity: 0.9;
+            opacity: 0.9;
+            min-heigh: 200px;
+            border-radius: 10px;
+        }
+
+            .U-guodu-box div {
+                color: #fff;
+                line-height: 20px;
+                font-size: 12px;
+                margin: 0px auto;
+                height: 100%;
+                padding-top: 10%;
+                padding-bottom: 10%;
+            }
+
+        #allmap {
+            position: relative;
+            height: 76%;
+            width: 100%;
+        }
+
+        #r-result {
+            overflow: auto;
+            border: 1px solid #F2F5F8;
+            height: 100%;
+            margin-bottom: 100px;
+        }
+    </style>
+    <script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/help.css"/>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=OyDszy2RWczbWEyxG5xHVKU5"></script>
+    <script type="text/javascript" src="/js/BDMap.js"></script>
+    <script type="text/javascript" src="/js/help.js"></script>
+    <title>公交众包-深圳交研中心</title>
+</head>
+<body>
+    <div id="BgDiv1"></div>
+    <div class="DialogDiv" style="display:none; ">
+        <div class="U-guodu-box">
+            <div>
+                <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td align="center"><img src="/img/loading.gif"></td>
+                    </tr>
+                    <tr>
+                        <td valign="middle" align="center">提交中，请稍后！</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="maindiv" style="height:100%;width:100%">
+        <div id="searchdiv" style="height:16%">
+            <div style="height:100%;width:15%;float:left">
+                <input type="button" value="互换" class="btn btn-info" onclick="StartEndExchange('startpoint','endpoint');" style="width:100%;height:100%" />
+            </div>
+            <div style="float:left;width:67%;height:100%;">
+                <input type="text" id="startpoint" class="form-control" placeholder="请输入起点" style="height:50%;margin-left: 2px;" />
+                <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+                <input type="text" id="endpoint" class="form-control" placeholder="请输入终点" style="height:50%;margin-left: 2px;" />
+            </div>
+            <div style="height:100%;width:15%;float:left;margin: 4px;">
+                <input type="button" class="btn btn-primary" value="搜索" onclick="ManualSearchDrivingRoute();" style="width:100%;height:100%" />
+            </div>
+        </div>
+        <div id="submitdiv" style="margin:2px;height:8%;width:100%">
+            <div style="height:100%;width:80%;float:left"><input type="text" id="telephone" class="form-control" placeholder="请输入手机号码" style="height:100%" /></div>
+            <div style="height:96%;width:17%;float:left;"><input id="button5" type="button" class="btn btn-success" value="提交" onclick="ajaxSubmitInfo();" style="width:100%;height:100%;margin: 2px;" /></div>
+        </div>
+        <div id="allmap"></div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");
+    map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+    var myCity = new BMap.LocalCity();
+    myCity.get(GetCityName);
+    AddSEPointAutoComplete();
+    AddStartEndControl();
+    var btncontrol = document.getElementById("btncontrol");
+    btncontrol.click();
+</script>
